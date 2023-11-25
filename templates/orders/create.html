@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Checkout
+{% endblock %}
+
+{% block content %}
+<section class="">
+    <h1 class="">Checkout</h1>
+    <ul class="">
+        {% for item in cart %}
+        <li class="">
+            {{item.quatity}} x {{item.product.name}}
+            <span class="">{{item.total_price}}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <h3 class="">Total: <span class="">{{cart.get_total_price}}</span></h3>
+    <hr>
+    <form action="" method="post">
+        {{form.as_p}}
+        <input type="submit" value="Place order" class="bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+        {% csrf_token %}
+    </form>
+</section>
+
+
+
+{% endblock %}

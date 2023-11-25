@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{product.name}}
+{% endblock %}
+{% block content %}
+<section class="my-10">
+    <div class=" md:px-12 px-4 md:py-12 py-4 grid  md:grid-cols-3  md:gap-10   place-content-center justify-center">
+        <div class="md:col-span-2 mb-6">
+            <img src="{{product.image.url}}" alt="" class="shadow-2xl rounded-xl max-h-96 w-full object-center object-cover">
+            
+        </div>
+        <div class="md:col-span-1 ">
+            <div class=" bg-gray-800 text-white rounded-xl p-4">
+                <h2 class="text-2xl  font-extrabold mb-3 md:text-start text-center">
+                    {{product.name}}
+                </h2>
+                <p class="text-xl mb-2">Category: <span class="font-bold text-center"><a href="" class="">{{product.category}}</a></span></p>
+                <p class="text-xl mb-2">Size: <span class=" bg-teal-500 px-2 py-2 text-white  rounded-full ">{{product.size}}</span><span class="text-rose-500"> {{product.available_size}}</span></p>
+                <p class="text-xl mb-2">Price: <span class="">$ {{product.price}}</span></p>
+                {% if product.description %}
+                <p class="text-xl line-clamp-4 mb-8">Description: <span class=" block text-sm font-light">{{product.description}}</span></p>
+                {% endif %}
+                <div class="my-8 mx-4  flex items-center flex-col-reverse md:flex-row justify-around">
+                    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                        {% csrf_token %}
+                        <button>
+                            <a href="" class="text-lg bg-teal-500 hover:bg-teal-700  px-6 py-4 capitalize">Add to Cart</a>
+                        </button>
+                    </form>
+                    <a href="" class="text-lg border-2 border-white md:px-6 px-10 py-3 md:mb-0 mb-6 hover:border-0 hover:bg-teal-500 capitalize">Buy now</a>
+                </div>
+            </div>
+            
+    </div>
+    
+    </div>
+    <hr>
+    
+ <div class="md:px-12 px-4 md:py-6 py-4">
+    {% if related_products %}
+    <h2 class="text-4xl text-center font-mono font-bold text-gray-800 capitalize mb-6">related art</h2>
+    <div class="grid md:grid-cols-3 grid-cols-1 place-content-center gap-4">
+        {% for product in related_products %}
+        <div class="shadow-2xl">
+          <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full md:h-80 h-64 object-center object-cover rounded-t-lg">
+          <a href="{{product.get_absolute_url}}" class="">
+            <div class="bg-white  rounded-b-xl py-6 px-4">
+                <p class="text-2xl font-semibold mb">{{product.name}}</p>
+                <p class="text-xl">Price: $<strong>{{product.price}}</strong></p>
+            </div>
+        </a>
+        </div>
+        
+        {% endfor %}
+    </div>
+    {% else  %}
+        <h2 class="text-6xl my-4 text-center">No related arts to this Item</h2>
+     {% endif %}   
+
+ </div>
+</section>
+ 
+{% endblock %}

@@ -1,0 +1,9 @@
+.venv/
+db.sqlite3
+accounts/__pycache__/
+art_project/__pycache__/
+product/__pycache__/
+cart/__pycache__/
+orders/__pycache__/
+product/__pycache__/
+theme/__pycache__/

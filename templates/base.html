@@ -1,0 +1,36 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>{% block title %}{% endblock %} | Shop</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+	</head>
+
+	<body class="leading-normal tracking-normal font-mono">
+		<div class="bg-blue-500 text-white p-4">
+			<a href="{% url 'accounts:logout' %}" class="text-lg">logout</a>
+			<a href="{% url 'accounts:login' %}" class="text-lg">login</a>
+			<a href="{% url 'accounts:register' %}" class="text-lg">register</a>
+			<div class="">
+				{% with total_items=cart|length %}
+				{% if total_items > 0 %}
+				    Your cart:
+					<a href="{% url 'cart:cart_detail' %}" class="">
+						{{total_items}} item{{total_items|pluralize}}, $ {{cart.get_total_price}}
+					</a>
+				{% elif not order %}
+				<p class="">Your cart is empty</p> 
+				{% endif %} 
+				{% endwith %} 
+			</div>
+		</div>
+		{% block content%}
+		<div class="container mx-auto">
+			
+		</div>
+		{% endblock %}
+	</body>
+</html>
