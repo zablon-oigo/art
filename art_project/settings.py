@@ -42,10 +42,13 @@ INSTALLED_APPS = [
     'product.apps.ProductConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
     'tailwind',
     'theme',
 ]
 TAILWIND_APP_NAME='theme'
+
+EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,7 +92,10 @@ DATABASES = {
     }
 }
 
-
+#stripe
+STRIPE_PUBLISHABLE_KEY='' #Publishable key
+STRIPE_SECRET_KEY='' #Secret Key
+STRIPE_API_VERSION=''
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

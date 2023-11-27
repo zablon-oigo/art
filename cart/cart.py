@@ -16,13 +16,13 @@ class Cart:
 
           self.cart=cart
 
-     def add(self, product, quantity=1, override_quantity=False):
+     def add(self, item, quantity=1, override_quantity=False):
                """
                Add a product to the cart or update its quantity
                """
-               product_id=str(product.id)
+               product_id=str(item.id)
                if product_id not in self.cart:
-                    self.cart[product_id]={'quantity':0, 'price':str(product.price)}
+                    self.cart[product_id]={'quantity':0, 'price':str(item.price)}
                if override_quantity:
                     self.cart[product_id]['quantity']=quantity
                else:
@@ -36,11 +36,11 @@ class Cart:
                """
                self.session.modified=True
      
-     def remove(self, product):
+     def remove(self, item):
            """
            Remove a product from the Cart
            """
-           product_id=str(product.id)
+           product_id=str(item.id)
 
            if product_id in self.cart:
                  del self.cart[product_id]
@@ -73,7 +73,7 @@ class Cart:
      
      
      def get_total_price(self):
-           return sum(Decimal(item['price'] * item['quantity'] for item in self.cart.values()))
+           return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
 
 

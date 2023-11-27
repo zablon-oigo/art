@@ -21,14 +21,14 @@
                 {% if product.description %}
                 <p class="text-xl line-clamp-4 mb-8">Description: <span class=" block text-sm font-light">{{product.description}}</span></p>
                 {% endif %}
-                <div class="my-8 mx-4  flex items-center flex-col-reverse md:flex-row justify-around">
-                    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                <div class="my-8 mx-4">
+                    <form action="{% url 'cart:cart_add' product.id %}" method="post" class="flex items-center  justify-around">
                         {% csrf_token %}
-                        <button>
-                            <a href="" class="text-lg bg-teal-500 hover:bg-teal-700  px-6 py-4 capitalize">Add to Cart</a>
-                        </button>
+                        {{form}}
+                        <input type="submit" value="add to cart" class="text-lg bg-teal-500 hover:bg-teal-700  px-4 py-4 capitalize">
+                    
                     </form>
-                    <a href="" class="text-lg border-2 border-white md:px-6 px-10 py-3 md:mb-0 mb-6 hover:border-0 hover:bg-teal-500 capitalize">Buy now</a>
+                  
                 </div>
             </div>
             
