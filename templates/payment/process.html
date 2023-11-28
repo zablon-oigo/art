@@ -46,7 +46,7 @@ Pay your order
 </table>
 
 <form action="{% url 'payment:process' %}" method="post">
-    <input type="submit" value="Pay now" class="">
+    <input type="submit" value="Pay now" class="bg-teal-500 px-6 py-4 rounded-xl text-white text-xl cursor-pointer">
     {% csrf_token %}
 </form>
 
