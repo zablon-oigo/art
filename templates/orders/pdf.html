@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ReviveArtist</h1>
+    <p>
+        Invoice no. {{order.id}}
+        <span class="">
+            {{order.created|date:"M d, Y"}}
+        </span>
+    </p>
+    <h3>
+        Bill to
+    </h3>
+    <p>
+        {{order.first_name}}{{order.lastname}}
+        {{order.email}}
+        {{order.address}}
+        {{order.postal_code}}, {{order.city}}
+    </p>
+    <h3>Itme Bought</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in order.items.all %}
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
