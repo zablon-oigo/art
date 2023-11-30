@@ -4,6 +4,9 @@ import stripe
 from django.conf import settings
 from orders.models import Order
 from decimal import Decimal
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from . import webhooks
 
 "Stripe API instance"
 stripe.api_key=settings.STRIPE_SECRET_KEY
@@ -51,3 +54,28 @@ def payment_completed(request):
 
 def payment_canceled(request):
     return render(request,'payment/canceled.html')
+
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    if event.type == 'checkout.session.completed':
+        session=event.data.object
+
+        if session.mode =='payment' and session.payment_status == 'paid':
+            try:
+                order=Order.objects.get(id=session.client_reference_id)
+            except Order.DoesNotExist:
+                return HttpResponse(status=404)
+            #mark the order as paid
+            order.paid=True
+            #store Stripe payment ID
+            order.stripe_id=session.payment_intent
+            order.save()
+            #launch asynchronous task
+            payment_completed.delay(order.id)
+    
+    return HttpResponse(status=200)
+
+
+            
