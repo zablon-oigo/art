@@ -20,6 +20,7 @@ import os
 os.add_dll_directory(r"C:\Program Files\GTK3-Runtime Win64\bin")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-!t!@%(7=$szsf$pekszy&yglgqrj9b3ah#enph$*klo8&is!u='
