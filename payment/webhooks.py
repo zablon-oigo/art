@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from orders.models import Order
-
+from .tasks import payment_completed
 @csrf_exempt
 def stripe_webhook(request):
     payload=request.body
@@ -33,8 +33,8 @@ def stripe_webhook(request):
                 return HttpResponse(status=404)
         #mark order as Paid
             order.paid=True
-        #Store Stripe payment ID
-            order.stripe_id=session.payment_intent
-        #launch asynchronous task
+       
             order.save()
+            #launch asynchronous Task
+            payment_completed(order.id)
     return HttpResponse(status=200)
