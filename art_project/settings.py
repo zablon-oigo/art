@@ -51,8 +51,6 @@ INSTALLED_APPS = [
 ]
 TAILWIND_APP_NAME='theme'
 
-EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -99,7 +97,8 @@ DATABASES = {
 STRIPE_PUBLISHABLE_KEY='pk_test_51OHJ7GGbGlrR2PIzF5spJbCFfFbq5YFqNJg9uATzRzGcIU00xJxsO91D4bmLwneZcudQZvM4kUsIRIsV7ljTj0tK00Xsk57cE3' #Publishable key
 STRIPE_SECRET_KEY='sk_test_51OHJ7GGbGlrR2PIzCzaPO1lieTPltnzIPqeDTvWQ6w2qypOg1EM1HoUyuUnIfzf7Kz7sbkuwAfdv9m9v46ral2R600H3qEfQLY' #Secret Key
 STRIPE_API_VERSION='2023-10-16'
-STRIPE_WEBHOOK_SECRET='whsec_f75a46bbcd951492f084ee417920c52e00ec4236de32f6a853cdeb2a77d1ca68'
+STRIPE_WEBHOOK_SECRET= 'whsec_f75a46bbcd951492f084ee417920c52e00ec4236de32f6a853cdeb2a77d1ca68'
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
