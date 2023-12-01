@@ -11,7 +11,10 @@ def order_payment(obj):
     if obj.stripe_id:
         html=f'<a href="{url}" target="_blank">{obj.stripe_id}</a>'
         return mark_safe(html)
-    order_payment.short_description='Stripe Payment'
+    return ''
+order_payment.short_description='Stripe Payment'
+
+
 def order_detail(obj):
     url=reverse('orders:admin_order_detail', args=[obj.id])
     return mark_safe(f'<a href="{url}">View</a>')
