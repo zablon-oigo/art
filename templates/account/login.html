@@ -3,7 +3,7 @@
 
 {% block  content %}
 <section class="">
-    <div class="">
+    <div class="bg-gray-100 p-6 my-20 shadow-2xl max-w-md mx-auto">
         <form action="{% url 'accounts:login' %}" method="post">
             {% csrf_token %}
             {% for field in form %}
@@ -12,7 +12,7 @@
                 {{field}}
             </div>
             {% endfor %}
-            <input type="submit" value="Log in" class="text-white bg-cyan-500 px-6 py-4 rounded-lg ">
+            <input type="submit" value="Log in" class="w-full text-white bg-cyan-500 px-6 py-4 rounded-lg ">
         </form>
     </div>
 </section>
