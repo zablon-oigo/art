@@ -3,7 +3,9 @@ from .models import Product,Category
 from cart.forms import CartAddProductForm
 
 def landing_page(request):
-    return render(request, 'product/landing.html')
+    products=Product.objects.all()[:4]
+    context={'products':products}
+    return render(request, 'product/landing.html',context)
 
 def product_list(request, category_slug=None):
     category=None
