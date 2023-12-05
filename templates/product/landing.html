@@ -1,20 +1,83 @@
 {% extends 'base.html' %}
-
 {% block title %}
 Home
 {% endblock %}
 
 {% block content %}
-<section class="">
+<section class="max-w-4xl mx-auto">
    <div class="">
-    <img src="" alt="" class="" id="image">
-    <img src="" alt="" class="" id="image">
-    <img src="" alt="" class="" id="image">
+    <h2 class="text-4xl">Landing page</h2>
+    {% load static %}
+    <img src="{% static 'images/image1' %}" alt="" class="image">
+    <img src="{% static 'images/image2' %}" alt="" class="image">
+    <img src="{% static 'images/image3' %}" alt="" class="image">
+    
     <div class="">
         <span class=""></span>
         <span class=""></span>
         <span class=""></span>
     </div>
+    <h1 class="text-4xl text-center text-gray-700 font-semibold">Deals of the Day</h1>
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 grid-cols-1 gap-4 place-content-center mt-6">
+        {% for product in products %}
+    <div class="shadow-2xl rounded-b-xl">
+        <a href="{{product.get_absolute_url}}" class="">
+            <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-48 object-center object-cover rounded-t-lg">
+            <div class="bg-white p-6">
+                <p class="text-xl mb-4">{{product.name |title}}</p>
+                <div class="flex items-center justify-center">
+                    <button class="border-2 rounded-xl  border-gray-600 px-6 py-3 hover:border-0 hover:bg-teal-500 hover:text-white">
+                        <a href="" class="inline-flex items-center justify-center uppercase">Add to Cart</a>
+                    </button>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+                <div class="my-10 flex items-center justify-center">
+                    <button class="px-6 py-3 rounded-xl  bg-teal-500 hover:bg-teal-700 text-white ">
+                        <a href="" class="inline-flex items-center justify-center text-lg uppercase">view all</a>
+                    </button>
+                </div>
+
+               
    </div>
+</section>
+<div class="my-10 bg-teal-700  text-white px-10 py-12">
+<div class="max-w-4xl mx-auto flex md:flex-row flex-col items-center justify-between">
+    <div class="mb-3">
+        <h2 class="text-3xl font-bold text-center">$6000M +</h2>
+        <p class="text-xl font-medium text-center">Transaction Values</p>
+   </div>
+   <div class="mb-3">
+       <h2 class="text-3xl font-bold text-center">3000 +</h2>
+        <p class="text-xl font-medium text-center">Products avilable</p>
+   </div>
+   <div class="mb-3">
+       <h2 class="text-3xl font-bold text-center">8 +</h2>
+        <p class="text-xl font-medium text-center">Years of Experience</p>
+   </div>
+   <div class="mb-3">
+       <h2 class="text-3xl font-bold text-center">99%</h2>
+        <p class="text-xl font-medium text-center">Happy Clients</p>
+   </div>
+</div>
+</div>
+<section class="my-10">
+    <h2 class="text-4xl text-center font-semibold text-gray-700 mb-6">Shop By category</h2>
+    <div class="grid md:grid-cols-4 grid-cols-2 gap-4 max-w-6xl mx-auto">
+        {% for category in categories %}
+            <div class="  rounded-xl  max-w-md p-6 text-white">
+                <div class="my-6 p-6 rounded-xl bg-black  bg-opacity-60 flex items-center justify-center flex-col">
+                    <h2 class="text-3xl mb-2 text-center font-semibold ">{{category.name}}</h2>
+                    <button class="border-2 border-white rounded-xl px-6 py-3">
+                        <a href="" class="uppercase text-md">view all</a></button>
+                </div>
+
+            </div>
+            {% endfor %}
+           
+    </div>
 </section>
 {% endblock %}
