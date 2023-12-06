@@ -1,5 +1,4 @@
 {% load static tailwind_tags %}
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,6 +6,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
 		{% tailwind_css %}
 	</head>
 
@@ -25,33 +25,25 @@
 					</a>
 				</div>
 				<div class="">
-					<a href="" class="md:text-4xl text-xl text-gray-800 font-bold uppercase">revived artist</a>
+					<a href="" class="md:text-4xl text-xl text-gray-800 font-bold fonts-sans uppercase">shop</a>
 				</div>
 				<div class="space-x-4 inline-flex items-center justify-between">
-					<div class="md:block hidden">
-						<i class="fa-solid fa-magnifying-glass text-2xl text-gray-800"></i>
-						<input type="search" name="query" class="hidden border-gray-800 border-2 bg-white rounded-lg">
-					</div>
-					<a href="" class="">
-						<i class="fa-solid fa-cart-plus text-2xl text-teal-500"></i>
-					</a>
-					<div class="">
-						<i class="fa-solid fa-user text-2xl border-2 border-gray-700 px-2.5 py-2.5 bg-white rounded-full text-gray-800"></i>
-					</div>
-				</div>
-				<button class="md:hidden block">
-					<i class="fa-solid fa-bars text-2xl bg-black border-2 border-gray-700"></i>
-				</button>
+				
+				
 			</nav>
 		</header>
-		<div class="bg-teal-500 p-4 space-x-6 text-white hidden md:flex items-center justify-center ">
-			<a href="" class="text-xl text-center font-semibold ">Home</a>
-			<a href="" class="text-xl text-center font-semibold">About</a>
-			<a href="" class="text-xl text-center font-semibold">Exhitions</a>
-			<a href="" class="text-xl text-center font-semibold">Contact us</a>
-			<a href="" class="text-xl text-center font-semibold">Artist profile</a>
-			<a href="" class="text-xl text-center font-semibold">Privacy policy</a>
+		<div class="bg-teal-700 p-4  text-white md:block hidden">
+			<div class="max-w-6xl mx-auto space-x-8 flex itmes-center justify-center">
+				<a href="" class="text-lg font-sans text-center font-semibold ">Home</a>
+				<a href="" class="text-lg font-sans text-center font-semibold">About</a>
+				<a href="" class="text-lg font-sans text-center font-semibold">Exhitions</a>
+				<a href="" class="text-lg font-sans text-center font-semibold">Contact us</a>
+				<a href="" class="text-lg font-sans text-center font-semibold">Artist profile</a>
+				<a href="" class="text-lg font-sans text-center font-semibold">Privacy policy</a>
+			</div>
 		</div>
+	
+		{% comment %}
 		<div class="bg-blue-500 text-white p-4">
 			<a href="{% url 'accounts:logout' %}" class="text-lg">logout</a>
 			<a href="{% url 'accounts:login' %}" class="text-lg">login</a>
@@ -69,11 +61,62 @@
 				{% endwith %} 
 			</div>
 		</div>
+		{% endcomment %}
 		{% block content%}
-		<div class="container mx-auto">
+		<div class="">
 			
 		</div>
 		{% endblock %}
+		<footer class="bg-teal-700 text-white font-sans">
+			<div class="max-w-4xl mx-auto p-6">
+				<div class="flex itmes-center justify-between md:flex-row flex-col">
+					<div class="mb-6">
+						<h2 class="text-3xl mb-4 font-semibold">About</h2>
+						<p class="text-md font-thin">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi architecto voluptate reiciendis? Ipsum fugit, saepe sunt sequi doloribus officia esse.</p>
+					</div>
+					<div class="w-full mb-6">
+						<h2 class="text-3xl font-semibold mb-4">Links</h2>
+					<div class=" flex flex-col justify-between gap-y-2">
+						<a href="" class="text-lg">Home</a>
+						<a href="" class="text-lg">About</a>
+						<a href="" class="text-lg">Exhibitions</a>
+						<a href="" class="text-lg">Contact us</a>
+						<a href="" class="text-lg">Privacy Policy</a>
+						<a href="" class="text-lg">Term of use</a>
+					</div>
+					</div>
+					<div class="w-full mb-6">
+						<h2 class="mb-4 text-3xl font-semibold">Location</h2>
+						<p class="text-md">
+							
+							Lorem ipsum dolor sit.<br>
+							P.O Box 0001-00 <br> 
+							Nairobi
+						  </p>
+                        <div class="my-4">
+							<h2 class="text-3xl font-semibold mb-2 mx-2.5">Social</h2>
+							<a href="">
+						<i class="fa-brands mx-2.5 fa-youtube text-2xl transition-all hover:delay-200 hover:duration-700 hover:scale-125 hover:rotate-12 hover:ease-in-out text-white "></i>
+
+							</a>
+							<a href="">
+						<i class="fa-brands mx-2.5 fa-instagram text-2xl transition-all hover:delay-200 hover:duration-700 hover:scale-125 hover:rotate-12 hover:ease-in-out text-white "></i>
+
+							</a>
+							<a href="">
+						<i class="fa-brands mx-2.5 text-2xl transition-all hover:delay-200 hover:duration-700 hover:scale-125 hover:rotate-12 hover:ease-in-out text-white  fa-facebook"></i>
+
+							</a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<p class="text-xl text-center">&copy; Copyright reviveartist {% now 'Y' %}</p>
+		</footer>
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 		<script src="https://kit.fontawesome.com/a0e99f8a3c.js" crossorigin="anonymous"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 	</body>
 </html>
