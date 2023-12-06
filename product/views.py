@@ -3,7 +3,7 @@ from .models import Product,Category
 from cart.forms import CartAddProductForm
 
 def landing_page(request):
-    products=Product.objects.all()[:4]
+    products=Product.objects.all().order_by('-created')[:6]
     categories=Category.objects.all()[:4]
     context={'products':products,'categories':categories}
     return render(request, 'product/landing.html',context)
