@@ -5,23 +5,35 @@ Checkout
 {% endblock %}
 
 {% block content %}
-<section class="">
-    <h1 class="">Checkout</h1>
-    <ul class="">
-        {% for item in cart %}
-        <li class="">
-            {{item.quatity}} x {{item.product.name}}
-            <span class="">{{item.total_price}}</span>
-        </li>
-        {% endfor %}
-    </ul>
-    <h3 class="">Total: <span class="">{{cart.get_total_price}}</span></h3>
-    <hr>
-    <form action="" method="post">
-        {{form.as_p}}
-        <input type="submit" value="Place order" class="bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
-        {% csrf_token %}
-    </form>
+<section class="max-w-4xl mx-auto my-20 font-sans">
+<div class="flex items-center  gap-6 md:flex-row flex-col ">
+    <div class="bg-gray-100 shadow-2xl max-w-md mx-auto rounded-xl p-10">
+        <h1 class="text-3xl text-center">Order sumarry</h1>
+        <ul class="">
+            {% for item in cart %}
+            <li class="text-lg">
+                {{item.quantity}} x {{item.product.name}}
+                <span class="">{{item.total_price}}</span>
+            </li>
+            {% endfor %}
+        </ul>
+        <h3 class="text-xl">Total: <span class="font-semibold">${{cart.get_total_price}}</span></h3>
+    </div>
+        
+    <div class="bg-gray-300 max-w-md mx-auto shadow-2xl rounded-xl p-6">
+        <h2 class="text-4xl mb-4 text-center">Order Details</h2>
+        <form action="" method="post">
+            {% for field in form %}
+            <div class="mb-2">
+                <label for="" class="text-lg block">{{field.label_tag}}</label>
+                {{field}}
+            </div>
+            {% endfor%}
+            <input type="submit" value="Place order" class="w-full bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
 </section>
 
 
