@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Exhibition,ArtSize
+from .models import Category, Product, Exhibition,ArtSize,Testimonial
 
 
 admin.site.register(ArtSize)
@@ -28,3 +28,8 @@ class ExhibitionAdmin(admin.ModelAdmin):
     list_filter=['publish',]
 
 
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display=['name','created']
+    list_filter=['created',]
