@@ -5,6 +5,7 @@
 {% endblock %}
 {% block content %}
 <section class="my-10">
+    <a href="{% url 'product:landing' %}" class="mx-20">go back</a>
     <div class=" md:px-12 px-4 md:py-12 py-4 grid  md:grid-cols-3  md:gap-10   place-content-center justify-center">
         <div class="md:col-span-2 mb-6">
             <img src="{{product.image.url}}" alt="" class="shadow-2xl rounded-xl max-h-96 w-full object-center object-cover">
@@ -19,16 +20,23 @@
                 <p class="text-xl mb-2">Size: <span class=" bg-teal-500 px-2 py-2 text-white  rounded-full ">{{product.size}}</span><span class="text-rose-500"> {{product.available_size}}</span></p>
                 <p class="text-xl mb-2">Price: <span class="">$ {{product.price}}</span></p>
                 {% if product.description %}
-                <p class="text-xl line-clamp-4 mb-8">Description: <span class=" block text-sm font-light">{{product.description}}</span></p>
+                <p class="text-xl line-clamp-3 mb-8">Description: <span class=" block text-sm font-light">{{product.description}}</span></p>
                 {% endif %}
                 <div class="my-8 mx-4">
                     <form action="{% url 'cart:cart_add' product.id %}" method="post" class="flex items-center  justify-around">
                         {% csrf_token %}
                         {{form}}
-                        <input type="submit" value="add to cart" class="text-lg bg-teal-500 hover:bg-teal-700  px-4 py-4 capitalize">
+                        <input type="submit" value="add to cart" class="w-full text-lg bg-teal-500 hover:bg-teal-700  px-4 py-4 capitalize">
                     
                     </form>
-                  
+                    <script>
+                        $(document).ready(function () {
+                            $("#add-to-cart-button").on("click", function () {
+                                $("input[name='add_to_cart']").val(true);
+                                $("form").submit();
+                            });
+                        });
+                    </script>
                 </div>
             </div>
             
