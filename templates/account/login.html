@@ -1,19 +1,39 @@
 {% extends 'base.html' %}
-
+{% block title %}
+Login
+{% endblock %}
 
 {% block  content %}
 <section class="">
-    <div class="bg-gray-100 p-6 my-20 shadow-2xl max-w-md mx-auto">
-        <form action="{% url 'accounts:login' %}" method="post">
-            {% csrf_token %}
+    <div class="bg-gray-100 flex justify-center items-center h-screen">
+   
+        <div class="w-1/2 h-screen hidden lg:block">
+            {% load static %}
+          <img src="{% static 'image/image1.jpg' %}" alt="login Image" class="object-cover w-full h-full">
+        </div>
+        
+        <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+          <h1 class="text-2xl font-semibold mb-4">Login</h1>
+          <form action="{% url 'accounts:login' %}" method="POST">
             {% for field in form %}
-            <div class="mb-2">
-                <label for="" class="text-xl">{{field.label_tag}}</label>
-                {{field}}
+            {% csrf_token %}
+            <div class="mb-4">
+              <label for="username" class="block text-gray-600">{{field.label_tag}}</label>
+              {{field}}
             </div>
-            {% endfor %}
-            <input type="submit" value="Log in" class="w-full text-white bg-cyan-500 px-6 py-4 rounded-lg ">
-        </form>
-    </div>
+            {% endfor %}  
+            <div class="mb-6 text-blue-500">
+              <a href="#" class="hover:underline">Forgot Password?</a>
+            </div>
+          
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+          </form>
+        
+          <div class="mt-6 text-blue-500 text-center">
+            <a href="#" class="hover:underline">Sign up Here</a>
+          </div>
+        </div>
+        </div>
 </section>
 {% endblock  %}
+
