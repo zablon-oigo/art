@@ -1,11 +1,14 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product,Category
+from .models import Product,Category,Testimonial,Exhibition
 from cart.forms import CartAddProductForm
 
 def landing_page(request):
     products=Product.objects.all().order_by('-created')[:6]
     categories=Category.objects.all()[:4]
-    context={'products':products,'categories':categories}
+    testimonials=Testimonial.objects.all().order_by('-created')[:3]
+    exhibitions=Exhibition.objects.all().order_by('-publish')[:3]
+    cart_product_form=CartAddProductForm()
+    context={'products':products,'categories':categories,'testimonials':testimonials,'exhibitions':exhibitions,'form':cart_product_form}
     return render(request, 'product/landing.html',context)
 
 def product_list(request, category_slug=None):
