@@ -3,7 +3,7 @@ from .models import Product,Category,Testimonial,Exhibition
 from cart.forms import CartAddProductForm
 
 def landing_page(request):
-    products=Product.objects.all().order_by('-created')[:6]
+    products=Product.objects.all().order_by('-created')[:5]
     categories=Category.objects.all()[:4]
     testimonials=Testimonial.objects.all().order_by('-created')[:3]
     exhibitions=Exhibition.objects.all().order_by('-publish')[:3]
