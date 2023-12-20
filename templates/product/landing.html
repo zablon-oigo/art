@@ -4,40 +4,90 @@ Home
 {% endblock %}
 
 {% block content %}
-<section class="max-w-4xl mx-auto">
+<section class=" mx-auto">
    <div class="">
-    <h2 class="text-4xl">Landing page</h2>
     {% load static %}
-    <img src="{% static 'images/image1' %}" alt="" class="image">
-    <img src="{% static 'images/image2' %}" alt="" class="image">
-    <img src="{% static 'images/image3' %}" alt="" class="image">
-    
-    <div class="">
-        <span class=""></span>
-        <span class=""></span>
-        <span class=""></span>
+   
+
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-[32rem]">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <h2 class="text-center font-sans text-8xl font-bold">revive artist</h2>
+            <img src="{% static 'image/image1.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="{% static 'image/image2.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="{% static 'image/image3.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="{% static 'image/image2.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="{% static 'image/image3.jpg' %}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
     </div>
-    <h1 class="text-4xl text-center text-gray-700 font-semibold">Deals of the Day</h1>
-    <div class="max-w-7xl mx-auto grid md:grid-cols-4 grid-cols-1 gap-4 place-content-center mt-6">
+
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+    
+    </div>
+    <h1 class="text-4xl text-center text-gray-700 font-semibold my-6">Deals of the Day</h1>
+    <div class="max-w-6xl mx-auto grid md:grid-cols-5 gap-4 grid-cols-2 ">
         {% for product in products %}
-    <div class="shadow-2xl rounded-b-xl">
+    <div class="shadow-2xl rounded-b-xl  my-4 ">
         <a href="{{product.get_absolute_url}}" class="">
-            <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full h-48 object-center object-cover rounded-t-lg">
-            <div class="bg-white p-6">
-                <p class="text-xl mb-4">{{product.name |title}}</p>
-                <div class="flex items-center justify-center">
-                    <button class="border-2 rounded-xl  border-gray-600 px-6 py-3 hover:border-0 hover:bg-teal-500 hover:text-white">
-                        <a href="" class="inline-flex items-center justify-center uppercase">Add to Cart</a>
-                    </button>
+            <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full  h-64 object-center object-cover rounded-t-lg">
+            <div class="bg-white p-6 rounded-xl font-sans">
+               
+                    <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1">{{product.category}}</h3>
+                    <h2 class="text-gray-900 title-font text-md font-medium">{{product.name |title}}</h2>
+                    <p class="mt-1 "><span class="font-semibold">Price:</span> ${{product.price}}</p>
+                  
+                <div class="my-2">
+                    
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post" class="flex items-center  justify-around">
+                            {% csrf_token %}
+                            {{form}}
+                            <button type="submit" class=" w-full text-white px-6 py-3 hover:scale-x-110 hover:-translate-y-2 hover:duration-700 hover:delay-300 hover:ease-linear transition-all bg-teal-500 hover:bg-teal-800 hover:text-white uppercase">add to cart</button>
+                        </button>
+                        </form>
+                    
                 </div>
             </div>
         </a>
+  
+
     </div>
     {% endfor %}
 </div>
                 <div class="my-10 flex items-center justify-center">
-                    <button class="px-6 py-3 rounded-xl  bg-teal-500 hover:bg-teal-700 text-white ">
-                        <a href="" class="inline-flex items-center justify-center text-lg uppercase">view all</a>
+                    <button class="px-6 py-3 rounded-xl  bg-teal-500 hover:bg-teal-700   transform-gpu hover:scale-125 hover:translate-y-3  hover:duration-700 hover:delay-300 hover:ease-linear text-white ">
+                        <a href="{% url 'product:product_list' %}" class="inline-flex items-center justify-center text-lg uppercase">view all</a>
                     </button>
                 </div>
 
@@ -68,16 +118,78 @@ Home
     <h2 class="text-4xl text-center font-semibold text-gray-700 mb-6">Shop By category</h2>
     <div class="grid md:grid-cols-4 grid-cols-2 gap-4 max-w-6xl mx-auto">
         {% for category in categories %}
-            <div class="  rounded-xl  max-w-md p-6 text-white">
-                <div class="my-6 p-6 rounded-xl bg-black  bg-opacity-60 flex items-center justify-center flex-col">
+            <div class=" bg-black rounded-xl shadow-2xl  md:px-10 px-3 py-6 text-white">
+                <div class="">
                     <h2 class="text-3xl mb-2 text-center font-semibold ">{{category.name}}</h2>
-                    <button class="border-2 border-white rounded-xl px-6 py-3">
-                        <a href="" class="uppercase text-md">view all</a></button>
+                    <div class="">
+                        <button class="border-2 w-full border-white rounded-xl px-6 py-3">
+                            <a href="" class="uppercase text-md">view all</a></button>
+                    </div>
                 </div>
 
             </div>
             {% endfor %}
            
     </div>
+    <div class="my-10 max-w-6xl mx-auto">
+        <div class="flex items-center justify-between md:flex-row flex-col">
+            <div class="md:w-2/5 w-full bg-teal-800 p-6 rounded-lg text-white ">
+                <div class="md:my-40 my-20">
+                    <i class="fa-solid fa-quote-left text-4xl rounded-full bg-white px-2.5 py-2.5 text-slate-800"></i>
+                    <h2 class="text-3xl capitalize text-center font-bold">What our client are saying</h2>
+
+                </div>
+            </div>
+            <section class="md:w-1/2 w-full  flex flex-row items-center justify-center">
+                {% for client in testimonials %}
+                <div class=" bg-gray-100 rounded-xl p-8 shadow-2xl testimonials   flex items-center justify-center md:flex-row flex-col duration-700 ease-in-out ">
+                    <img src="{{client.image.url}}" alt="" class=" h-20 w-20 rounded-full ring-2 ring-green-500">
+                    <div class="md:mx-6 ml-0">
+                        <p class="text-md font-sans font-medium text-gray-600 text-center">{{client.description}}</p>
+                          <h2 class="text-ld  text-gray-700 text-center font-semibold">{{client.name |title}}</h2>
+                          <p class="text-gray-500 text-sm text-center font-sans">{{client.designation}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </section>
+        </div>
+    </div>
+    <section class="my-10 max-w-6xl mx-auto">
+        <h2 class="text-4xl text-center font-semibold text-gray-700 mb-6">Upcoming Activites</h2>
+
+              <div class="grid md:grid-cols-3 grid-cols-1 gap-4 place-content-center">
+                {% for event in exhibitions %}
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href="#">
+                        <img class="rounded-t-lg" src="{{event.image.url}}" alt="" />
+                    </a>
+                    <div class="p-5">
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{event.title}}</h5>
+                        </a>
+                        <p class="mb-3 font-sans line-clamp-3 text-gray-700 dark:text-gray-400">{{event.description}}</p>
+                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Read more
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+              </div>
+
+        
+    </section>
 </section>
+<script>
+    $(document).ready(function () {
+        $("#add-to-cart-button").on("click", function () {
+            $("input[name='add_to_cart']").val(true);
+            $("form").submit();
+        });
+    });
+</script>
+<script src="{% static 'js/main.js' %}"></script>
 {% endblock %}
