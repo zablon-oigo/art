@@ -4,7 +4,7 @@
 Your Shopping Cart
 {% endblock %}
 {% block content %}
-<div class="max-w-lg mx-auto my-20 bg-white rounded-lg overflow-hidden md:max-w-lg border border-gray-400">
+<div class=" max-w-lg mx-auto my-20 bg-white rounded-lg overflow-hidden md:max-w-md shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
     <div class="px-4 py-2 border-b border-gray-200">
         <h2 class="font-semibold text-gray-800 text-3xl font-sans text-center">Your Shopping Cart</h2>
     </div>
@@ -30,14 +30,14 @@ Your Shopping Cart
         </div>
         {% endwith %}
         {% endfor %}
-        <h3 class="text-gray-900 font-semibold text-end text-3xl p-4 font-sans">Total: $<span class=" ">{{cart.get_total_price}}</span></h3>
+        <h3 class="text-gray-900  text-end text-3xl p-4 font-sans">Total: <span class="font-semibold mx-2">${{cart.get_total_price}}</span></h3>
         </div>
-        <div class="flex items-center justify-between px-6 py-3 bg-gray-200">
-            <button class="py-2 px-4 bg-teal-500 hover:bg-teal-600 text-white rounded-lg">
+        <div class="flex font-sans items-center justify-between px-6 py-3 bg-gray-200">
+            <button class="py-3 px-4 bg-teal-500 hover:bg-teal-600 text-white rounded">
                 <a href="{% url 'product:product_list' %}" class="">Continue Shopping</a>
             </button>
             
-            <button class="py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
+            <button class="py-3 px-4 bg-blue-500 hover:bg-blue-600 text-white rounded">
                 <a href="{% url 'orders:order_create' %}" class="">Checkout</a>
         </button>
         
