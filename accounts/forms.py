@@ -24,9 +24,11 @@ class ProfileForm(forms.ModelForm):
 class LoginForm(forms.Form):
     username=forms.CharField(max_length=65, widget=forms.TextInput(attrs={
         'placeholder':'Enter username',
+        'class':'w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'
     }))
     password=forms.CharField(max_length=65, widget=forms.PasswordInput(attrs={
-        'placeholder':'Enter Password'
+        'placeholder':'Enter Password',
+        'class':'w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500'
     }))
 
 
