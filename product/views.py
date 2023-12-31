@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Product,Category,Testimonial,Exhibition
 from cart.forms import CartAddProductForm
+from .filters import ProductFilter
 
 def landing_page(request):
     products=Product.objects.all().order_by('-created')[:5]
@@ -18,7 +19,8 @@ def product_list(request, category_slug=None):
     if category_slug:
         category=get_object_or_404(Category, slug=category_slug)
         products=products.filter(category=category)
-    context={'categories':categories, 'products':products,'category':category}
+    products_filtered=ProductFilter(request.GET, queryset=products).qs
+    context={'categories':categories, 'products':products,'category':category,'products_filtered':products_filtered}
     return render(request, 'product/product_list.html', context)
 
 
