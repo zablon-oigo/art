@@ -38,14 +38,10 @@
         cursor: pointer;
     }
 </style>
-<section class="my-10 max-w-6xl mx-auto">
+<section class="bg-lime-50  py-10 max-w-6xl mx-auto">
    <div class="mx-6">
     <a href="{% url 'product:landing' %}" class="inline-flex items-center px-2 py-2 text-sm font-semibold text-center text-gray-9">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" class="mx-1"/>
-          </svg>
-          
-        go back
+        <i class="fa-solid fa-arrow-left text-4xl"></i>
         
         </a>
    </div>
@@ -66,21 +62,23 @@
                 {% if product.image_3 %}
                     <img src="{{ product.image_3.url }}" alt="" class="w-32 h-32 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image_3.url }}')">
                 {% endif %}
-                
+                <img src="{{product.image.url}}" alt="" class="w-32 h-32 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image.url }}')">
             </div>
         {% endif %}     
         </div>
         <div class="md:col-span-1 ">
-            <div class=" bg-gray-800 text-white rounded-xl p-4">
-                <h2 class="text-2xl  font-extrabold mb-3 md:text-start text-center">
+            <div class="bg-gradient-to-b from from-gray-400 to-gray-950   text-white rounded-xl p-4">
+                <h2 class="text-2xl capitalize font-extrabold mb-3 md:text-start text-center">
                     {{product.name}}
                 </h2>
                 <p class="text-xl mb-2">Category: <span class="font-bold text-center"><a href="" class="">{{product.category}}</a></span></p>
-                <p class="text-xl mb-2">Size: <span class=" bg-teal-500 px-2 py-2 text-white  rounded-full ">{{product.size}}</span><span class="text-rose-500"> {{product.available_size}}</span></p>
-                <p class="text-xl mb-2">Price: <span class="">$ {{product.price}}</span></p>
+                <p class="text-xl mt-6">Size: <span class=" bg-teal-500 px-2 py-2 text-white  rounded-full ">{{product.size}}</span><span class="text-rose-500"> {{product.available_size}}</span></p>
+                <p class="text-xl mt-6">Price: <span class="font-bold">${{product.price}}</span></p>
+                {% comment %}
                 {% if product.description %}
-                <p class="text-xl line-clamp-3 mb-8">Description: <span class=" block text-sm font-light">{{product.description}}</span></p>
+                    <p class="text-xl line-clamp-3 mb-8">Description: <span class=" block text-sm font-light">{{ product.description }}</span></p>
                 {% endif %}
+            {% endcomment %}
                 <div class="my-8 mx-4">
                     <form action="{% url 'cart:cart_add' product.id %}" method="post" class="flex items-center  justify-around">
                         {% csrf_token %}
@@ -102,8 +100,7 @@
     </div>
     
     </div>
-    <hr>
-    
+    {% comment %}  
  <div class="md:px-12 px-4 md:py-6 py-4">
     {% if related_products %}
     <h2 class="text-4xl text-center font-mono font-bold text-gray-800 capitalize mb-6">related art</h2>
@@ -126,6 +123,7 @@
      {% endif %}   
 
  </div>
+ {% endcomment %}
  <!-- Modal for zoomed image -->
 <div id="zoomModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
