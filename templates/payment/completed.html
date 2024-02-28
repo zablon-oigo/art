@@ -1,15 +1,30 @@
 {% extends 'base.html' %}
-
 {% block title %}
 Payment successful
 {% endblock %}
 
 {% block content %}
-
-<h1 class="text-4xl">
-    Your payment was successful
-</h1>
-<p class="text-xl">
-    Your Payment has been processed successfully.
-</p>
+<div class="bg-gradient-to-bl from-lime-800 py-20 px-10 md:px-0 to-lime-700 min-h-[400px]">
+    <div class="max-w-md py-20  rounded-xl bg-white mx-auto shadow-2xl">
+        <div class="flex justify-center">
+            <i class="fa-light text-8xl  fa-circle-check text-teal-lime-500"></i>
+        </div>
+        <h1 class="md:text-4xl text-xl text-center">
+            Your payment was successfull 😊
+        </h1>
+        <p class="text-md text-center mt-8 text-gray-700">
+            Thank you for shopping.Please check your email
+            for receipt with your order details  
+        </p>
+        <div class="my-10">
+            <p class="text-lg text-center font-semibold">
+                view more 
+                <a href="{% url 'product:landing' %}" class="text-lime-500 underline underline-offset-4">
+                    art drawing 🎨
+                </a>
+            </p>
+        </div>
+    </div>
+    
+</div>
 {% endblock %}
