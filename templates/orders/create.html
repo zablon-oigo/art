@@ -5,32 +5,82 @@ Checkout
 {% endblock %}
 
 {% block content %}
-<section class="max-w-4xl mx-auto my-20 font-sans">
-<div class="flex items-center  gap-6 md:flex-row flex-col ">
-    <div class="md:w-2/5 w-full bg-gray-100 shadow-2xl max-w-md mx-auto rounded-xl p-10">
-        <h1 class="text-3xl text-center">Order sumarry</h1>
-        <ul class="">
-            {% for item in cart %}
-            <li class="text-lg">
-                {{item.quantity}} x {{item.product.name}}
-                <span class="">{{item.total_price}}</span>
-            </li>
-            {% endfor %}
+<section class=" bg-white/100 mx-auto md:py-20 py-10 md:px-20 px-5  font-sans">
+<div class="grid md:grid-cols-3 gap-3 ">
+    <div class="col-span-1 bg-gradient-to-bl from-lime-500 to-lime-300 shadow-2xl max-w-md mx-auto rounded-xl p-10">
+        <h1 class="text-3xl text-center text-white">Order summary</h1>
+        <ul class="list-disc flex flex-col items-center justify-center mt-4">
+                <div class="">
+                    {% for item in cart %}
+                    <li class="text-lg text-gray-700 mb-2 ">
+                        {{item.quantity}} x {{item.product.name}}
+                        <span class="">{{item.total_price}}</span>
+                    </li>
+                    {% endfor %}
+                </div>
         </ul>
-        <h3 class="text-xl">Total: <span class="font-semibold">${{cart.get_total_price}}</span></h3>
+        <h3 class="text-xl text-center">Total: <span class=" text-2xl text-white font-semibold">${{cart.get_total_price}}</span></h3>
     </div>
         
-    <div class="md:w-3/4 w-full bg-gray-300 max-w-md mx-auto shadow-2xl rounded-xl p-6">
-        <h2 class="text-4xl mb-4 text-center">Order Details</h2>
+    <div class="col-span-2 bg-gradient-to-bl from-lime-500 to-lime-600 max-w-2xl shadow-2xl rounded-xl md:px-0 px-6 ">
+        <h2 class="text-4xl mb-4 text-white text-center py-4">Order Details</h2>
         <form action="" method="post">
-            {% for field in form %}
-            <div class="mb-2">
-                <label for="" class="text-lg font-semibold block">{{field.label_tag}}</label>
-                {{field}}
-            </div>
-            {% endfor%}
-            <input type="submit" value="Place order" class="w-full bg-blue-500 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+            {{form.non_field_errors }}
+                
+                     <div class="flex justify-evenly md:flex-row flex-col">
+                        <div class="mb-2">
+                            <label for="" class="text-lg text-white capitalize font-semibold block">first name</label>
+                            
+                                {{form.first_name}}
+                            
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="text-lg text-white capitalize font-semibold block">last name</label>
+                            
+                                {{form.last_name}}
+                            
+                        </div>
+
+                     </div>
+                     <div class="flex justify-evenly md:flex-row flex-col">
+                        <div class="mb-2">
+                            <label for="" class="text-lg text-white capitalize font-semibold block">email</label>
+                            
+                                {{form.email}}
+                            
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="text-lg text-white capitalize font-semibold block">address</label>
+                            
+                                {{form.address}}
+                            
+                        </div>
+                     </div>
+                     <div class="flex justify-evenly md:flex-row flex-col">
+                        <div class="mb-2">
+                            <label for="" class="text-lg text-white capitalize font-semibold block">postal code</label>
+                            
+                                {{form.postal_code}}
+                            
+                        </div>
+                        <div class="mb-2">
+                            <label for="" class="text-lg text-white capitalize font-semibold block">city</label>
+                            
+                                {{form.city}}
+                            
+                        </div>
+                     </div>
+                      <div class="">
+                        {% if form.errors or form.non_field_errors %}
+                        {% for field in form %}
+                        {{field.errors}}
+                        {% endfor %}
+                        {% endif %}
+                      </div>
             {% csrf_token %}
+            <div class="flex justify-center m-4 ">
+                <input type="submit" value="submit" class="px-8 py-3 md:w-1/2 w-full rounded-xl bg-blue-800 text-white">
+            </div>
         </form>
     </div>
 </div>
