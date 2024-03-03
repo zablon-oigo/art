@@ -5,8 +5,49 @@ Home
 {% endblock %}
 
 {% block content %}
-<div class="min-h-[600px]">
+<div class="min-h-[300px]">
+    <div class="relative" >
+        <img src="" alt="" class="slide" data-aos="fade-right"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine" data-aos-offset="5000"
+        data-aos-duration="5000">
+        <div class="bg-white p-10 rounded-xl absolute top-[50%] right-[50%]">
+            <p class="">
+                welcome to my shop
+            </p>
+        </div>
+    </div>
    
+</div>
+<div class="my-10 mx-10 grid md:grid-cols-3 grid-cols-1 gap-4 ">
+    <div class="px-10 py-5 rounded-lg border-2 border-lime-600 flex flex-col items-center justify-center">
+         <div class="">
+            <i class="fa-solid fa-truck text-6xl text-lime-700"></i>
+         </div>  
+        <p class="text-md text-lime-600">
+            Free Shipping
+        </p>
+      
+    </div>
+    <div  class="px-10 py-5 rounded-lg border-2 border-lime-600 flex flex-col items-center justify-center">
+           <div class="">
+            <i class="fa-solid fa-credit-card text-6xl text-lime-700"></i>
+           </div>
+        <p class="text-md text-lime-600">
+            Secure payment 
+        </p>
+      
+    </div>
+    <div class="px-10 py-5 rounded-lg border-2 border-lime-600 flex flex-col items-center justify-center">
+         <div class="">
+            <i class="fa-solid fa-headset text-6xl text-lime-700"></i>
+         </div>   
+        <p class="text-md text-lime-600">
+            24/7 Support
+        </p>
+        
+      
+    </div>
 </div>
 <div class="bg-gray-100 md:pb-28 pb-14">
     <h1 class="text-4xl text-center text-gray-700 font-semibold py-6 uppercase">Deals of the Day</h1>
@@ -134,44 +175,20 @@ Home
     </div>
 </div>
 <script>
-const slides=document.querySelectorAll(".slides img")
-let slideIndex=0
-let intervalId=null;
+    var imageUrls = [
+    "{% static 'image/img1.jpg' %}",
+    "{% static 'image/img2.jpg' %}"
+    ];
+   
+        var currentIndex = 0;
+        var slideImage = document.querySelector('.slide');
 
-document.addEventListener("DOMContentLoaded", initializeSlider)
-function initializeSlider(){
-    if(slides.length > 0){
-        slides[slideIndex].classList.add("displayslide")
-        intervalId=setInterval(nextSlide,5000)
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % imageUrls.length; 
+            slideImage.src = imageUrls[currentIndex];
+        }
 
-    }
- 
-  
-}
-function showSlide(index){
+        setInterval(nextSlide, 5000);
 
-    if (index >= slides.length){
-        slideIndex=0;
-
-    }
-    else if(index < 0 ){
-        slideIndex = slides.length -1;
-
-    }
-slides.forEach(slide=>{
-    slide.classList.remove("displayslide")
-})
-slide[slideIndex].classList.add("displaySlide")
-}
-function prevSlide(){
-    slideIndex--
-    showSlide(slideIndex)
-
-}
-function nextSlide(){
-    slideIndex++;
-    showSlide(slideIndex)
-
-}
     </script>
 {% endblock %}
