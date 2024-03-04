@@ -49,20 +49,20 @@
         <div class="md:col-span-2 mb-6">
             <img src="{{product.image.url}}" alt="" class="shadow-2xl rounded-xl h-[600px] w-full object-center object-cover" id="mainImage">
             {% if product.image_1 or product.image_2 or product.image_3 %}
-            <div class="flex flex-row items-center justify-start mt-10">
+            <div class="flex flex-row items-center flex-wrap justify-center mt-10">
                 
                 {% if product.image_1 %}
-                    <img src="{{ product.image_1.url }}" alt="" class="w-32 h-32 mx-4  rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image_1.url }}')">
+                    <img src="{{ product.image_1.url }}" alt="" class="md:w-32 md:h-32 w-16 h-16 mx-4  rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image_1.url }}')">
                 {% endif %}
                 
                 {% if product.image_2 %}
-                    <img src="{{ product.image_2.url }}" alt="" class="w-32 h-32 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image_2.url }}')">
+                    <img src="{{ product.image_2.url }}" alt="" class="md:w-32 md:h-32 w-16 h-16 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image_2.url }}')">
                 {% endif %}
                 
                 {% if product.image_3 %}
-                    <img src="{{ product.image_3.url }}" alt="" class="w-32 h-32 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image_3.url }}')">
+                    <img src="{{ product.image_3.url }}" alt="" class="md:w-32 md:h-32 w-16 h-16 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image_3.url }}')">
                 {% endif %}
-                <img src="{{product.image.url}}" alt="" class="w-32 h-32 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image.url }}')">
+                <img src="{{product.image.url}}" alt="" class="md:w-32 md:h-32 w-16 h-16 mx-4 rounded-xl object-center object-cover" onclick="setMainImage('{{ product.image.url }}')">
             </div>
         {% endif %}     
         </div>
