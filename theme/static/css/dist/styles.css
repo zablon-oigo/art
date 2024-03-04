@@ -984,6 +984,10 @@ select {
   height: 0.125rem;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-16 {
   height: 4rem;
 }
@@ -1046,6 +1050,10 @@ select {
 
 .w-1\/2 {
   width: 50%;
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-16 {
@@ -1888,6 +1896,10 @@ select {
     display: flex;
   }
 
+  .md\:h-32 {
+    height: 8rem;
+  }
+
   .md\:h-80 {
     height: 20rem;
   }
@@ -1902,6 +1914,10 @@ select {
 
   .md\:w-3\/4 {
     width: 75%;
+  }
+
+  .md\:w-32 {
+    width: 8rem;
   }
 
   .md\:grid-cols-3 {
