@@ -5,18 +5,7 @@ Home
 {% endblock %}
 
 {% block content %}
-<div class="min-h-[300px]">
-    <div class="relative" >
-        <img src="" alt="" class="slide" data-aos="fade-right"
-        data-aos-offset="300"
-        data-aos-easing="ease-in-sine" data-aos-offset="5000"
-        data-aos-duration="5000">
-        <div class="bg-white p-10 rounded-xl absolute top-[50%] right-[50%]">
-            <p class="">
-                welcome to my shop
-            </p>
-        </div>
-    </div>
+<div class="min-h-[400px]">
    
 </div>
 <div class="my-10 mx-10 grid md:grid-cols-3 grid-cols-1 gap-4 ">
@@ -53,7 +42,7 @@ Home
     <h1 class="text-4xl text-center text-gray-700 font-semibold py-6 uppercase">Deals of the Day</h1>
 <div class="md:px-6 px-5 grid md:grid-cols-5 gap-4 grid-cols-1 ">
     {% for product in products %}
-<div class="shadow-2xl rounded-b-xl my-4 " data-aos="zoom-in">
+<div class="shadow-2xl rounded-b-xl my-4 ">
     <a href="{{product.get_absolute_url}}" class="">
         <img src="{{product.image.url}}" alt="{{product.name}}" class="w-full  h-64 object-center object-cover rounded-t-lg">
         <div class="bg-white rounded-xl p-4 font-sans">
@@ -174,21 +163,5 @@ Home
 </div>
     </div>
 </div>
-<script>
-    var imageUrls = [
-    "{% static 'image/img1.jpg' %}",
-    "{% static 'image/img2.jpg' %}"
-    ];
-   
-        var currentIndex = 0;
-        var slideImage = document.querySelector('.slide');
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % imageUrls.length; 
-            slideImage.src = imageUrls[currentIndex];
-        }
-
-        setInterval(nextSlide, 5000);
-
-    </script>
 {% endblock %}
