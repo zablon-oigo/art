@@ -14,7 +14,7 @@ def sign_in(request):
             if user is not None and user.is_active:
                 login(request, user)
                 messages.success(request, f'Login request was successfull {user.username}')
-                return redirect("art:product_list")
+                return redirect("product:product_list")
             
             else:
                 messages.error(request, 'Invalid username or password')

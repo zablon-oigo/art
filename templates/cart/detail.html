@@ -5,6 +5,7 @@ Your Shopping Cart
 {% endblock %}
 {% block content %}
 <div class="bg-gradient-to-br min-h-full from-lime-600 to-gray-500 py-10 ">
+    {% if cart.get_total_price > 0 %}
     <h2 class="text-3xl text-white font-semibold capitalize text-center mb-4">your shopping cart</h2>
        <div class="md:w-2/5 mx-auto  bg-white shadow-2xl rounded-2xl">
         {% for item in cart %}
@@ -51,19 +52,22 @@ Your Shopping Cart
                 </p>
                 <p class="text-sm dark:text-gray-400">Not including taxes and shipping costs</p>
             </div>
-            
+            {% else %}
+            {% include 'cart/list.html' %}
+        {% endif %}
             <div class="">
                 <a href="{% url 'product:product_list' %}" class="">
                     <button type="button" class="bg-blue-500 text-white px-6 py-3 rounded-md">Back
                         <span class="sr-only sm:not-sr-only">to shop</span>
                     </button>
                 </a>
-    
+                 {% if cart.get_total_price > 0 %}
                 <a href="{% url 'orders:order_create' %}" class="">
                     <button type="button" class="px-6 py-3 text-white rounded-lg bg-teal-600">
                         <span class="sr-only sm:not-sr-only">Continue to</span>Checkout
                     </button>
                 </a>
+                {% endif %}
             </div>
         </div>
        </div>

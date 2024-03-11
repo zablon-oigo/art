@@ -49,32 +49,6 @@ module.exports = {
             'sans': ['Quicksand', 'sans-serif'],
         },
         
-
-            keyframes: {
-                'load-image': {
-                    '0%': {
-                        transform: 'scaleX(0) translateX(0)',
-                        opacity: 0,
-                    },
-                    '50%': {
-                        transform: 'scaleX(0.6) translateX(-20px)',
-                        opacity: 0.5,
-                    },
-                    '80%': {
-                        transform: 'scaleX(1.2) translateX(20px)',
-                        opacity: 1,
-                    },
-                    '100%': {
-                        transform: 'scaleX(1) translateX(0)',
-                        opacity: 0,
-                    },
-                },
-            },
-            animation: {
-                'load-image': 'load-image 6s ease-in-out forwards',
-
-            },
-        
            
        
     },
