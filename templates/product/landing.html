@@ -5,8 +5,46 @@ Home
 {% endblock %}
 
 {% block content %}
-<div class="min-h-[400px]">
-   
+<style>
+
+ 
+
+    /* swiper-container {
+      width: 100%;
+      height: 100%;
+    } */
+
+    /* swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    } */
+
+    swiper-slide img {
+      display: block;
+      object-fit: cover;
+    }
+  </style>
+<div class="min-h-">
+    <swiper-container class="mySwiper" pagination="true" pagination-clickable="true" navigation="true" space-between="30"
+    centered-slides="true" autoplay-delay="7500" autoplay-disable-on-interaction="false">
+    <swiper-slide>
+        <div class="slide-content relative">
+            <h2 class="absolute top-[50%] text-white bottom-[50%]  text-4xl right-[42%]">Heading 1</h2>
+            <img src="{% static 'image/img1.jpg' %}" alt="" class="h-[600px] w-full">
+          </div>
+    </swiper-slide>
+    <swiper-slide>
+        <img src="{% static 'image/img2.jpg' %}" alt="" class="h-[600px] w-full">
+    </swiper-slide>
+  </swiper-container>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+
 </div>
 <div class="my-10 mx-10 grid md:grid-cols-3 grid-cols-1 gap-4 ">
     <div class="px-10 py-5 rounded-lg border-2 border-lime-600 flex flex-col items-center justify-center">
@@ -163,5 +201,10 @@ Home
 </div>
     </div>
 </div>
-
+<script>
+  $('.single-item-rtl').slick({
+  rtl: true
+});
+	
+</script>
 {% endblock %}
