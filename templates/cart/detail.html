@@ -4,10 +4,10 @@
 Your Shopping Cart
 {% endblock %}
 {% block content %}
-<div class="bg-gradient-to-br min-h-full from-lime-600 to-gray-500 py-10 ">
+<div class="min-h-full py-10 bg-gradient-to-br from-sky-800 to-gray-100 ">
     {% if cart.get_total_price > 0 %}
-    <h2 class="text-3xl text-white font-semibold capitalize text-center mb-4">your shopping cart</h2>
-       <div class="md:w-2/5 mx-auto  bg-white shadow-2xl rounded-2xl">
+    <h2 class="mb-4 text-3xl font-semibold text-center text-white capitalize">your shopping cart</h2>
+       <div class="mx-auto bg-white shadow-2xl md:w-2/5 rounded-2xl">
         {% for item in cart %}
         {% with product=item.product %}
               <div class="grid grid-cols-4 gap-3 px-6 py-4">
@@ -15,11 +15,11 @@ Your Shopping Cart
                     <img src="{{product.image.url }}" alt="{{product.name}}" class="w-20 h-20 rounded-lg">
                 </div>
                <div class="col-span-2">
-                <h3 class="text-md font-semibold mb-4">{{product.name}}</h3>
+                <h3 class="mb-4 font-semibold text-md">{{product.name}}</h3>
                 
                     
                     <div class="flex text-md ">
-                        <button type="button" class="flex items-center  space-x-1">
+                        <button type="button" class="flex items-center space-x-1">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-4 h-4 fill-current">
                             <path d="M96,472a23.82,23.82,0,0,0,23.579,24H392.421A23.82,23.82,0,0,0,416,472V152H96Zm32-288H384V464H128Z"></path>
                             <rect width="32" height="200" x="168" y="216"></rect>
@@ -42,13 +42,13 @@ Your Shopping Cart
                     <p class="text-lg font-semibold">$ {{item.price}}</p>
                 </div>
               </div>
-        <hr class="bg-gray-400 m-8">
+        <hr class="m-8 bg-gray-400">
         {% endwith %}
         {% endfor %}
-        <div class="flex items-end pb-6 pr-2 justify-end gap-2  flex-col">
+        <div class="flex flex-col items-end justify-end gap-2 pb-6 pr-2">
             <div class="mb-4">
                 <p>Total amount:
-                    <span class="font-semibold text-2xl ml-6">${{cart.get_total_price}}</span>
+                    <span class="ml-6 text-2xl font-semibold">${{cart.get_total_price}}</span>
                 </p>
                 <p class="text-sm dark:text-gray-400">Not including taxes and shipping costs</p>
             </div>
@@ -57,13 +57,13 @@ Your Shopping Cart
         {% endif %}
             <div class="">
                 <a href="{% url 'product:product_list' %}" class="">
-                    <button type="button" class="bg-blue-500 text-white px-6 py-3 rounded-md">Back
+                    <button type="button" class="px-6 py-3 text-white bg-blue-500 rounded-md">Back
                         <span class="sr-only sm:not-sr-only">to shop</span>
                     </button>
                 </a>
                  {% if cart.get_total_price > 0 %}
                 <a href="{% url 'orders:order_create' %}" class="">
-                    <button type="button" class="px-6 py-3 text-white rounded-lg bg-teal-600">
+                    <button type="button" class="px-6 py-3 text-white bg-teal-600 rounded-lg">
                         <span class="sr-only sm:not-sr-only">Continue to</span>Checkout
                     </button>
                 </a>
