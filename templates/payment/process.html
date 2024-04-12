@@ -7,31 +7,31 @@ Pay your order
 {% block content %}
 
 <div class="">
-    <div class="max-w-md md:mx-auto mx-10  my-20 shadow-2xl rounded-2xl bg-gradient-to-bl from-lime-800 to-lime-700">
+    <div class="max-w-md mx-10 my-20 shadow-2xl md:mx-auto rounded-2xl bg-gradient-to-bl from-sky-800 to-sky-700">
             
         <div class="px-4 py-2 ">
-            <h2 class="font-semibold text-white text-3xl font-sans text-center">Your Shopping Cart</h2>
+            <h2 class="font-sans text-3xl font-semibold text-center text-white">Your Shopping Cart</h2>
         </div>
-        <div class="  divide-y divide-gray-200">
+        <div class="divide-y divide-gray-200 ">
             {% for item in order.items.all %}
-            <div class="flex items-center justify-between  py-4 px-6">
+            <div class="flex items-center justify-between px-6 py-4">
                 <a href="{{product.get_absolute_url}}" class="">
-                    <img class="w-16 h-16 object-cover rounded" src="{{item.product.image.url}}" alt="Product Image">
+                    <img class="object-cover w-16 h-16 rounded" src="{{item.product.image.url}}" alt="Product Image">
                 </a>
                 <div class="ml-3">
-                    <h3 class="text-white font-sans font-semibold ">{{item.product.name}}</h3>
-                    <p class="text-white font-semibold mt-2 font-sans text-end">$ {{item.price}}</p>
+                    <h3 class="font-sans font-semibold text-white ">{{item.product.name}}</h3>
+                    <p class="mt-2 font-sans font-semibold text-white text-end">$ {{item.price}}</p>
                 </div>
                
         
           
             </div>
             {% endfor %}
-            <h3 class="text-white  text-end text-3xl p-4 font-sans">Total: <span class="font-semibold mx-2">${{order.get_total_cost}}</span></h3>
+            <h3 class="p-4 font-sans text-3xl text-white text-end">Total: <span class="mx-2 font-semibold">${{order.get_total_cost}}</span></h3>
             
-            <div class="flex font-sans items-center justify-center px-6 py-3">
+            <div class="flex items-center justify-center px-6 py-3 font-sans">
                 <form action="{% url 'payment:process' %}" method="post">
-                    <input type="submit" value="Pay now" class="bg-teal-500 px-10 py-6 rounded-xl text-white text-xl cursor-pointer">
+                    <input type="submit" value="Pay now" class="px-10 py-6 text-xl text-white bg-teal-500 cursor-pointer rounded-xl">
                     {% csrf_token %}
                 </form>
         </div>
